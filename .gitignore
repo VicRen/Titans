@@ -1,0 +1,12 @@
+bin/AndroidManifest.xml
+bin/classes.dex
+bin/dexedLibs/android-support-v4-a9856600b25e0be8893872bf69da167b.jar
+bin/jarlist.cache
+bin/Titans.apk
+bin/resources.ap_
+bin/res/crunch/drawable-xxhdpi/ic_launcher.png
+bin/res/crunch/drawable-xhdpi/ic_launcher.png
+bin/res/crunch/drawable-mdpi/ic_launcher.png
+bin/res/crunch/drawable-hdpi/ic_launcher.png
+gen/com/testing/titans/R.java
+gen/com/testing/titans/BuildConfig.java
