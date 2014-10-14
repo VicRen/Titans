@@ -2,15 +2,15 @@ package com.testing.titans;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.testing.titans.utils.TitansLog;
+import com.testing.titans.views.ViewsPreferenceFragment;
 
-public class MainActivity extends Activity {
+public class SecondActivity extends Activity {
 
-    private static boolean DEBUG = true;
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final boolean DEBUG = true;
+    private static String TAG = SecondActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,32 +19,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainPrefernceFragment()).commit();
+                    .add(R.id.container, new ViewsPreferenceFragment()).commit();
         }
     }
 
     @Override
-    protected void onDestroy() {
-        log("onDestroy");
-        super.onDestroy();
-    }
-
-    @Override
-    public void onBackPressed() {
-        log("onBackPressed");
-        moveTaskToBack(true);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
