@@ -24,7 +24,7 @@ public class DrawerLayoutActivity extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_launcher, R.string.drawerlayout,
+                R.drawable.ic_drawer_am, R.string.drawerlayout,
                 R.string.drawerlayout) {
 
             @Override
@@ -36,9 +36,6 @@ public class DrawerLayoutActivity extends Activity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
     }
 
     @Override

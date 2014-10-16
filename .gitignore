@@ -10,3 +10,4 @@ bin/res/crunch/drawable-mdpi/ic_launcher.png
 bin/res/crunch/drawable-hdpi/ic_launcher.png
 gen/com/testing/titans/R.java
 gen/com/testing/titans/BuildConfig.java
+bin/res/crunch/drawable-xhdpi/ic_drawer_am.png
