@@ -3,4 +3,6 @@
     <color name="window_background">@android:color/white</color>
     <color name="actionbar_background">#d44a27</color>
     <color name="subtitle_text">#ccffffff</color>
+    <!-- main activity -->
+    <color name="main_activity_theme_background_stacked">@android:color/white</color>
 </resources>
