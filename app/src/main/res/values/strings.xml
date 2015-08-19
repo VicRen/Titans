@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Titans</string>
+
+    <string name="views">Views</string>
+    <string name="drawerlayout">Drawerlayout</string>
+    <string name="action_settings">Settings</string>
+</resources>
