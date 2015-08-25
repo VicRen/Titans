@@ -20,8 +20,7 @@ public class MainActivity extends Activity {
         log("onCreate");
         setContentView(R.layout.main);
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainPrefernceFragment()).commit();
+            getFragmentManager().beginTransaction().add(R.id.container, new MainPrefernceFragment()).commit();
         }
     }
 
