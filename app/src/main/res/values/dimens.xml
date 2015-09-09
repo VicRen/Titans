@@ -2,4 +2,25 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="account_selector_popup_width">400dip</dimen>
+
+    <!-- Initial height of transparent space above QuickContacts -->
+    <dimen name="quickcontact_starting_empty_height">150dp</dimen>
+    <!-- Initial size of QuickContact's title size -->
+    <dimen name="quickcontact_maximum_title_size">36dp</dimen>
+    <!-- When QC is uncollapsed, the title has this much margin on its left, right and bottom -->
+    <dimen name="quickcontact_title_initial_margin">16dp</dimen>
+    <!-- The ratio of width:height for the contact's photo in landscape -->
+    <item name="quickcontact_landscape_photo_ratio" type="dimen" format="float">0.7</item>
+    <!-- How far QuickContacts can be dragged and released from the top of the window before we dismiss it. -->
+    <dimen name="quickcontact_dismiss_distance_on_release">40dp</dimen>
+    <!-- How far QuickContacts can be dragged from the top of the window before we dismiss it. -->
+    <dimen name="quickcontact_dismiss_distance_on_scroll">100dp</dimen>
+    <!-- When first flinging QuickContacts towards the top of the window if the fling is
+        predicted to scroll past the window top by less than this amount, then QuickContacts
+        snaps to the top of the window. -->
+    <dimen name="quickcontact_snap_to_top_slop_height">33dp</dimen>
+    <dimen name="quick_contact_toolbar_elevation">4.5dp</dimen>
 </resources>

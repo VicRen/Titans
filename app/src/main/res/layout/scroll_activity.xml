@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.isvic.titans.widgets.MultiShrinkScroller xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slide_up_scroller"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="afterDescendants"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/transparent_view"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <FrameLayout
+            android:id="@+id/toolbar_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black">
+
+            <include layout="@layout/scroller_header" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/scroll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:background="@android:color/holo_red_dark"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/large_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:importantForAccessibility="no"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="36sp" />
+
+</me.isvic.titans.widgets.MultiShrinkScroller>

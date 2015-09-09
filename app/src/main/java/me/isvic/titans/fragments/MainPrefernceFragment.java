@@ -8,7 +8,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 
 import me.isvic.titans.R;
-import me.isvic.titans.SecondActivity;
+import me.isvic.titans.SlideUpActivity;
 
 public class MainPrefernceFragment extends PreferenceFragment {
 
@@ -36,7 +36,8 @@ public class MainPrefernceFragment extends PreferenceFragment {
             boolean ret = false;
             String key = preference.getKey();
             if (key.equals(KEY_VIEWS)) {
-                startActivity(new Intent(getActivity(), SecondActivity.class));
+//                startActivity(new Intent(getActivity(), SecondActivity.class));
+                startActivity(new Intent(getActivity(), SlideUpActivity.class));
                 ret = true;
             } else if (key.equals(KEY_VIEWS)) {
 
