@@ -21,6 +21,9 @@
         <activity android:name=".SlideUpActivity"
             android:theme="@style/Theme.QuickContact">
         </activity>
+        <activity android:name=".QuickContactActivity"
+            android:theme="@style/Theme.QuickContact">
+        </activity>
     </application>
 
 </manifest>

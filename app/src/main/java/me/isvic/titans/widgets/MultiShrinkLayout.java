@@ -20,7 +20,6 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.EdgeEffect;
 import android.widget.FrameLayout;
-import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
@@ -29,11 +28,11 @@ import me.isvic.titans.utils.SchedulingUtils;
 import me.isvic.titans.utils.TitansLog;
 
 /**
- * Created by Vic on 15/9/5.
+ * Created by Vic on 15/9/10.
  */
-public class MultiShrinkScroller extends FrameLayout {
+public class MultiShrinkLayout extends FrameLayout {
 
-    private static final String TAG = MultiShrinkScroller.class.getSimpleName();
+    private static final String TAG = MultiShrinkLayout.class.getSimpleName();
 
     /**
      * 1000 pixels per millisecond. Ie, 1 pixel per second.
@@ -63,8 +62,7 @@ public class MultiShrinkScroller extends FrameLayout {
 
     private final Context mContext;
 
-    private ScrollView mScrollView;
-    private View mScrollChildView;
+    private View mViewContent;
     private View mToolbarParent;
     private View mTransparentView;
     private View mTitleGradientView;
@@ -93,7 +91,7 @@ public class MultiShrinkScroller extends FrameLayout {
     private int mIntermediateHeaderHeight;
     private boolean mIsOpenContactSquare;
 
-    private SlideUpScrollerListener mListener;
+    private MultiShrinkListener mListener;
 
 
     private final int[] mGradientColors = new int[] {0,0x88000000};
@@ -102,7 +100,7 @@ public class MultiShrinkScroller extends FrameLayout {
     private GradientDrawable mActionBarGradientDrawable = new GradientDrawable(
             GradientDrawable.Orientation.BOTTOM_TOP, mGradientColors);
 
-    public interface SlideUpScrollerListener {
+    public interface MultiShrinkListener {
         void onScrolledOffBottom();
 
         void onStartScrollOffBottom();
@@ -141,15 +139,15 @@ public class MultiShrinkScroller extends FrameLayout {
         }
     };
 
-    public MultiShrinkScroller(Context context) {
+    public MultiShrinkLayout(Context context) {
         this(context, null);
     }
 
-    public MultiShrinkScroller(Context context, AttributeSet attrs) {
+    public MultiShrinkLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MultiShrinkScroller(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MultiShrinkLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         mEdgeGlowBottom = new EdgeEffect(context);
@@ -190,12 +188,11 @@ public class MultiShrinkScroller extends FrameLayout {
         attributeArray.recycle();
     }
 
-    public void initialize(SlideUpScrollerListener listener, boolean isOpenContactSquare) {
+    public void initialize(MultiShrinkListener listener, boolean isOpenContactSquare) {
         mListener = listener;
         mIsOpenContactSquare = isOpenContactSquare;
 
-        mScrollView = (ScrollView) findViewById(R.id.scroll_content);
-        mScrollChildView = findViewById(R.id.scroll_child);
+        mViewContent = findViewById(R.id.scroll_content);
         mToolbarParent = findViewById(R.id.toolbar_parent);
         mTransparentView = findViewById(R.id.transparent_view);
         mLargeTextView = (TextView) findViewById(R.id.large_title);
@@ -210,6 +207,8 @@ public class MultiShrinkScroller extends FrameLayout {
                 mIntermediateHeaderHeight = (int) (mMaximumHeaderHeight
                         * INTERMEDIATE_HEADER_HEIGHT_RATIO);
                 setHeaderHeight(getMaximumScrollableHeaderHeight());
+                mViewContent.getLayoutParams().height = getHeight() - mMinimumHeaderHeight;
+                mViewContent.setLayoutParams(mViewContent.getLayoutParams());
             }
         });
     }
@@ -406,15 +405,15 @@ public class MultiShrinkScroller extends FrameLayout {
             mToolbarParent.setLayoutParams(toolbarLayoutParams);
             delta -= originalValue - toolbarLayoutParams.height;
         }
-        mScrollView.scrollBy(0, delta);
+//        mScrollView.scrollBy(0, delta);
     }
 
     private void scrollDown(int delta) {
-        if (mScrollView.getScrollY() > 0) {
-            final int originalValue = mScrollView.getScrollY();
-            mScrollView.scrollBy(0, delta);
-            delta -= mScrollView.getScrollY() - originalValue;
-        }
+//        if (mScrollView.getScrollY() > 0) {
+//            final int originalValue = mScrollView.getScrollY();
+//            mScrollView.scrollBy(0, delta);
+//            delta -= mScrollView.getScrollY() - originalValue;
+//        }
         final ViewGroup.LayoutParams toolbarLayoutParams = mToolbarParent.getLayoutParams();
         if (toolbarLayoutParams.height < getMaximumScrollableHeaderHeight()) {
             final int originalValue = toolbarLayoutParams.height;
@@ -433,7 +432,7 @@ public class MultiShrinkScroller extends FrameLayout {
     }
 
     private int getOverflowingChildViewSize() {
-        return -getHeight() + mScrollChildView.getHeight() + mToolbarParent.getLayoutParams().height;
+        return -getHeight() + mViewContent.getHeight() + mToolbarParent.getLayoutParams().height;
     }
 
     private int getMaximumScrollableHeaderHeight() {
@@ -624,12 +623,12 @@ public class MultiShrinkScroller extends FrameLayout {
      */
     public int getScroll() {
         return mTransparentStartHeight - getTransparentViewHeight()
-                + getMaximumScrollableHeaderHeight() - getHeaderHeight() + mScrollView.getScrollY();
+                + getMaximumScrollableHeaderHeight() - getHeaderHeight();
     }
 
     private int getScroll_ignoreOversizedHeaderForSnapping() {
         return mTransparentStartHeight - getTransparentViewHeight()
-                + Math.max(getMaximumScrollableHeaderHeight() - getHeaderHeight(), 0) + mScrollView.getScrollY();
+                + Math.max(getMaximumScrollableHeaderHeight() - getHeaderHeight(), 0);
     }
 
     private int getScrollUntilOffBottom() {
@@ -693,8 +692,7 @@ public class MultiShrinkScroller extends FrameLayout {
 //        return mTransparentStartHeight
 //                // How much the ScrollView can scroll. 0, if child is smaller than ScrollView.
 //                + Math.max(0, mScrollViewChild.getHeight() - getHeight());
-        return mTransparentStartHeight
-                + Math.max(0, mScrollChildView.getHeight() - getHeight());
+        return mTransparentStartHeight + mMaximumHeaderHeight - mMinimumHeaderHeight;
     }
 
     private static class AcceleratingFlingInterpolator implements Interpolator {

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
-        android:src="@drawable/letter_bg"
+        android:src="@android:color/black"
         android:scaleType="centerCrop" />
 
     <View

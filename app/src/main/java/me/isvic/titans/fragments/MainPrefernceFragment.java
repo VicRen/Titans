@@ -7,12 +7,14 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 
+import me.isvic.titans.QuickContactActivity;
 import me.isvic.titans.R;
 import me.isvic.titans.SlideUpActivity;
 
 public class MainPrefernceFragment extends PreferenceFragment {
 
-    private static final String KEY_VIEWS = "views";
+    private static final String KEY_MULTI_SKRINK_SCROLLER = "key_multi_skrink_scroller";
+    private static final String KEY_MULTI_SKRINK_LAYOUT = "key_multi_skrink_layout";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,12 @@ public class MainPrefernceFragment extends PreferenceFragment {
         public boolean onPreferenceClick(Preference preference) {
             boolean ret = false;
             String key = preference.getKey();
-            if (key.equals(KEY_VIEWS)) {
-//                startActivity(new Intent(getActivity(), SecondActivity.class));
+            if (key.equals(KEY_MULTI_SKRINK_SCROLLER)) {
                 startActivity(new Intent(getActivity(), SlideUpActivity.class));
                 ret = true;
-            } else if (key.equals(KEY_VIEWS)) {
-
+            } else if (key.equals(KEY_MULTI_SKRINK_LAYOUT)) {
+                startActivity(new Intent(getActivity(), QuickContactActivity.class));
+                ret = true;
             }
             return ret;
         }

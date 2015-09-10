@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <Preference
-        android:key="views"
+        android:key="key_multi_skrink_scroller"
         android:persistent="false"
-        android:title="@string/views" />
+        android:title="@string/multi_shrink_scroller" />
+    <Preference
+        android:key="key_multi_skrink_layout"
+        android:persistent="false"
+        android:title="@string/multi_shrink_layout" />
 </PreferenceScreen>
