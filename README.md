@@ -3,4 +3,4 @@ Titans
 
 Technical pre-research
 
-It just testing codes.
+It's just testing codes.
